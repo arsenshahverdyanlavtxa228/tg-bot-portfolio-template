@@ -21,7 +21,8 @@ media/
 *.sqlite*
 *.log
 logs/
-README.md
+# README.md is NOT ignored — pyproject.toml references it as the package readme
+# and pip install . reads it during the builder stage.
 CHANGELOG.md
 LICENSE
 docker-compose.yml
