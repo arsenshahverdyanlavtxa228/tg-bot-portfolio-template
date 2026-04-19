@@ -1,0 +1,24 @@
+services:
+  - type: worker
+    name: tg-bot-portfolio
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:////app/data/bot.db
+      - key: MEDIA_DIR
+        value: /app/media
+      - key: DEFAULT_LOCALE
+        value: ru
+      - key: LOG_LEVEL
+        value: INFO
+    disk:
+      name: bot-data
+      mountPath: /app/data
+      sizeGB: 1
